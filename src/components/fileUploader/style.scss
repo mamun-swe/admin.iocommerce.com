@@ -1,0 +1,80 @@
+.img-select-container {
+    .preview-container {
+        .image {
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+
+            img {
+                min-width: 100%;
+                min-height: 100%;
+            }
+
+            p {
+                color: #000;
+                font-size: 13px;
+                font-family: "Roboto", sans-serif;
+            }
+
+            // Overlay
+            .thumbnail-overlay {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.795);
+
+                .loader {
+                    width: 40px;
+                    height: 40px;
+                    margin: auto;
+                    border-radius: 50%;
+                    border: 2px solid #fff;
+                    border-top: 2px solid #2962ff;
+                    animation: spin 1s linear infinite;
+                    -webkit-animation: spin 1s linear infinite;
+                }
+
+                /* Safari */
+                @-webkit-keyframes spin {
+                    0% {
+                        -webkit-transform: rotate(0deg);
+                    }
+
+                    100% {
+                        -webkit-transform: rotate(360deg);
+                    }
+                }
+
+                @keyframes spin {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .add-container {
+        .image-plus {
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+
+            .upload {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                opacity: 0;
+                width: 100%;
+                cursor: pointer;
+            }
+        }
+    }
+}

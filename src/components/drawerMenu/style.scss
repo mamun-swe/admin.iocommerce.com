@@ -1,0 +1,102 @@
+// Single menu item
+.single-menu {
+    width: 100%;
+
+    .btn {
+        width: 100%;
+        display: block;
+        color: #6c757d;
+        text-align: left;
+
+        .menu-icon {
+            font-size: 20px;
+            color: #6c757d;
+        }
+
+        .menu-title {
+            font-size: 14px;
+            font-weight: 400;
+            margin-left: 10px;
+        }
+    }
+
+    .isActive {
+        color: #000 !important;
+    }
+}
+
+// Sub-menu container
+.sub-menu-container {
+    overflow: hidden;
+
+    .menu-icon {
+        font-size: 20px;
+        color: #6c757d;
+    }
+
+    .menu-title {
+        color: #6c757d;
+        font-size: 14px;
+        font-weight: 400;
+        margin-left: 10px;
+        margin-top: 5px;
+        margin-bottom: 0;
+    }
+
+    .btn {
+        width: 100%;
+        display: block;
+        color: #6c757d;
+        text-align: left;
+    }
+
+    .isActive {
+        .menu-icon {
+            color: #063cdd !important;
+        }
+
+        .menu-title {
+            color: #063cdd !important;
+        }
+    }
+
+    .sub-menu {
+        width: 100%;
+        cursor: pointer;
+        padding: 6px 12px;
+        text-align: left;
+
+        .menu-arrow {
+            margin-top: 2px;
+
+            .arrow {
+                -moz-transition: all 0.3s linear;
+                -webkit-transition: all 0.3s linear;
+                transition: all 0.3s linear;
+            }
+
+            .down {
+                -moz-transform: rotate(90deg);
+                -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+    .sub-menu-body {
+        opacity: 0;
+        display: none;
+        overflow: hidden;
+        margin-left: 20px;
+        -webkit-transition: all .3s ease .15s;
+        -moz-transition: all .3s ease .15s;
+        -o-transition: all .3s ease .15s;
+        -ms-transition: all .3s ease .15s;
+        transition: all .3s ease .15s;
+    }
+
+    .show {
+        opacity: 1;
+        display: block;
+    }
+}

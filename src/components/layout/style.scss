@@ -1,0 +1,26 @@
+@import "../../App.scss";
+
+.page-layout {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    .page-header {
+
+        p {
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+
+            span {
+                color: $secondary;
+            }
+        }
+
+        h5 {
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    }
+}

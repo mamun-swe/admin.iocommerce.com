@@ -1,0 +1,73 @@
+.search-component {
+    form {
+        .input-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+
+            .form-control {
+                font-size: 14px;
+                padding-left: 12px;
+                padding-right: 35px;
+                border-radius: 25px;
+                height: 37px !important;
+                border: 1px solid #e9e8e8;
+
+                &:focus {
+                    border: 1px solid #dfdfdf;
+                }
+            }
+
+            .error {
+                border: 1px solid #dc3545 !important;
+            }
+
+            .btn {
+                position: absolute !important;
+                top: 1px !important;
+                right: 0 !important;
+                border-radius: 0 !important;
+                padding: 3px 10px !important;
+                height: 34px !important;
+                background: none !important;
+
+                i {
+                    color: #042893;
+                }
+            }
+        }
+    }
+
+    // button spin loader
+    .btn-loader {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 2px solid #dfdfdf;
+        border-top: 2px solid #042893;
+        -webkit-animation: spin 0.7s linear infinite;
+        /* Safari */
+        animation: spin 0.7s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+        0% {
+            -webkit-transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+}

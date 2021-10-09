@@ -1,0 +1,20 @@
+@import "../../App.scss";
+
+.four-o-four {
+    width: 100%;
+    height: 100vh;
+
+    p {
+        font-weight: 500;
+        color: $gray-600;
+        margin-bottom: 25px;
+    }
+
+    img {
+        width: 200px;
+
+        @media(min-width: 576px) {
+            width: 300px;
+        }
+    }
+}

@@ -1,0 +1,70 @@
+.drawer-container {
+    @media (max-width: 992px) {
+        .backdrop {
+            position: fixed;
+            top: 0;
+            left: 0%;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            overflow-y: auto;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.4s;
+            background: rgba(0, 0, 0, 0.548);
+        }
+
+
+        .open-backdrop {
+            visibility: visible !important;
+            opacity: 1 !important;
+            transition-delay: 0s !important;
+        }
+
+
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100%;
+            border-radius: 0;
+            overflow-y: auto;
+            transition: 0.3s;
+            background: #fff;
+            overflow-x: hidden;
+            transition-timing-function: ease-out;
+            z-index: 99999;
+
+            .drawer-body {
+                padding: 15px;
+            }
+        }
+
+        .open-drawer {
+            left: 0 !important;
+        }
+    }
+
+    @media(min-width: 992px) {
+        .drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100vh;
+            overflow-y: auto;
+            background: #fff;
+            overflow-x: hidden;
+            z-index: 99;
+            border-right: 1px solid #dfdfdf;
+
+            .drawer-body {
+                padding-top: 75px;
+                padding-left: 15px;
+                padding-right: 15px;
+                padding-bottom: 15px;
+            }
+        }
+    }
+}

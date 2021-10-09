@@ -1,0 +1,109 @@
+.btn {
+    padding: 6px 10px;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    transition: 0.2s all !important;
+}
+
+// Gray button
+.btn-gray {
+    color: #6c757d !important;
+    background: #f8f9fa !important;
+
+    &:hover {
+        color: #212529 !important;
+        background: #e9ecef !important;
+    }
+}
+
+// Primary button
+.btn-custom-primary {
+    color: #fff !important;
+    background: #042893 !important;
+    min-height: 42px !important;
+
+    &:hover {
+        color: #fff !important;
+        background: #063cdd !important;
+    }
+}
+
+// Primary outline button
+.btn-custom-primary-outline {
+    min-height: 42px !important;
+    color: #042893 !important;
+    background: #fff !important;
+    border: 1px solid #042893 !important;
+
+    &:hover {
+        color: #fff !important;
+        background: #063cdd !important;
+    }
+}
+
+// Primary-outline-badge button
+.btn-custom-primary-outline-badge {
+    min-height: 42px !important;
+    color: #042893 !important;
+    background: #fff !important;
+    border: 1px solid #042893 !important;
+    position: relative;
+
+    .badge-container {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 25px;
+        height: 25px;
+        font-size: 13px !important;
+        border-radius: 50% !important;
+        color: #fff !important;
+        background: #f10075 !important;
+    }
+
+    &:hover {
+        color: #fff !important;
+        background: #063cdd !important;
+    }
+}
+
+// custom-notification
+.btn-custom-notification {
+    color: #000;
+    background: none !important;
+    position: relative;
+
+    .badge-container {
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        width: 15px;
+        height: 15px;
+        font-size: 11px !important;
+        border-radius: 50% !important;
+        color: #fff !important;
+        background: #f10075 !important;
+    }
+}
+
+// Success button
+.btn-custom-success {
+    color: #198754 !important;
+    background: #19875417 !important;
+
+    &:hover {
+        color: #198754 !important;
+        background: #19875444 !important;
+    }
+}
+
+// Danger button
+.btn-custom-danger {
+    color: #dc3546a4 !important;
+    background: #dc354610 !important;
+
+    &:hover {
+        color: #dc3545 !important;
+        background: #dc35463a !important;
+    }
+}

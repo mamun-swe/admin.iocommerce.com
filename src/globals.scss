@@ -1,0 +1,155 @@
+/* Flex Box */
+
+.flex-center {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100%;
+}
+
+.flex-column {
+    -ms-flex-direction: column !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+    flex-direction: column !important;
+}
+
+// Container
+.container {
+    @media (min-width: 1440px) {
+        max-width: 1350px;
+    }
+
+    @media (min-width: 1500px) {
+        max-width: 1480px;
+    }
+
+    @media (min-width: 1680px) {
+        max-width: 1550px;
+    }
+}
+
+// Column padding for admin dashboard col padding
+.col-padding {
+    padding: 10px;
+
+    @media (min-width: 992px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+p {
+    font-size: 13px;
+    font-weight: 400;
+    color: $gray-600;
+}
+
+// Form
+form {
+    font-family: 'Roboto Condensed', sans-serif;
+
+    .form-group {
+        p {
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            color: #000;
+            font-size: 15px;
+            min-height: 42px;
+            background: #fff;
+            border: 1px solid #e9e8e8;
+        }
+
+        .form-control:focus {
+            background: #fff;
+            border: 1px solid #e9e8e8;
+        }
+
+        .error {
+            border: 1px solid $danger !important;
+        }
+    }
+
+    a {
+        font-size: 14px;
+        font-weight: 500;
+        color: $primary !important;
+
+        &:hover {
+            color: $secondary !important;
+        }
+    }
+}
+
+// Divider text
+.divider-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: $gray-600;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    margin: 15px 0;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        flex: 1;
+        height: 1px;
+        background-color: $gray-400;
+    }
+
+    &::before {
+        margin-right: 10px;
+    }
+
+    &::after {
+        margin-left: 10px;
+    }
+}
+
+// Modal
+.custom-modal {
+    font-family: 'Roboto Condensed', sans-serif;
+
+    .modal-dialog {
+        .modal-content {
+            .modal-header {
+                padding: 20px;
+
+                .d-flex {
+                    width: 100% !important;
+
+                    h6 {
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin-top: 7px;
+                    }
+                }
+            }
+
+            .modal-body {
+                padding: 20px;
+            }
+        }
+    }
+}
+
+// Hide element when call print function
+@media print {
+    .print-hidden {
+        display: none;
+    }
+}
