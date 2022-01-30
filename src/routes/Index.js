@@ -82,7 +82,7 @@ export const routes = [
                 path: "/dashboard/banner",
                 exact: true,
                 inDrawer: true,
-                icon: <Plus size={18} />,
+                icon: <List size={18} />,
                 component: BannerIndex
             },
             {
@@ -91,7 +91,7 @@ export const routes = [
                 path: "/dashboard/banner/store",
                 exact: true,
                 inDrawer: true,
-                icon: <List size={18} />,
+                icon: <Plus size={18} />,
                 component: BannerStore
             }
         ]

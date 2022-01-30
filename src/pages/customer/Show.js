@@ -25,6 +25,8 @@ const Show = () => {
         const response = await Requests.Customer.Show(id, header)
         if (response.status === 200) {
             setData(response.data.data)
+            console.log(response.data.data)
+
         }
         setLoading(false)
     }, [id, header])
@@ -118,7 +120,6 @@ const Show = () => {
                                 <p className="text-lowercase mb-4">{data.email || "N/A"}</p>
 
                                 <p className="pb-2 mb-2 border-bottom"><MapPin size={14} /> <b>Last Delivered Addres</b></p>
-                                <p className="text-capitalize mb-1">{data.shippingArea ? data.shippingArea[0] : "N/A"}</p>
                                 <p className="text-capitalize mb-4">{data.deliveryAddress ? data.deliveryAddress[0] : "N/A"}</p>
                             </div>
                         </div>

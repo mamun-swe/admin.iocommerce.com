@@ -155,6 +155,24 @@ const SearchBySku = async (value, header) => {
     return results
 }
 
+// Delete item
+const Delete = async (id, header) => {
+    try {
+        const response = await Axios.delete(`${api}product/${id}`, header)
+        if (response.status === 200) {
+            swal({
+                title: "Successfully!",
+                text: response.data.message,
+                icon: "success",
+                button: false,
+            })
+            return true
+        }
+    } catch (error) {
+        if (error) return ErrorHandeller(error)
+    }
+}
+
 const Product = {
     Index,
     Store,
@@ -165,7 +183,8 @@ const Product = {
     RemoveAdditional,
     VendorRequest,
     Search,
-    SearchBySku
+    SearchBySku,
+    Delete
 }
 
 export default Product

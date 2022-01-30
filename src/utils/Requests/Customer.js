@@ -71,6 +71,24 @@ const Orders = async (id, header) => {
     return response
 }
 
+// Delete item
+const Delete = async (id, header) => {
+    try {
+        const response = await Axios.delete(`${api}customer/${id}`, header)
+        if (response.status === 200) {
+            swal({
+                title: "Successfully!",
+                text: response.data.message,
+                icon: "success",
+                button: false,
+            })
+            return true
+        }
+    } catch (error) {
+        if (error) return ErrorHandeller(error)
+    }
+}
+
 
 const Customer = {
     Index,
@@ -78,7 +96,8 @@ const Customer = {
     Show,
     Update,
     Search,
-    Orders
+    Orders,
+    Delete
 }
 
 export default Customer

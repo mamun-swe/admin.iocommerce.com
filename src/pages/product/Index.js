@@ -1,9 +1,10 @@
 
 import React, { useState, useEffect, useCallback } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { Edit2, Eye, Plus } from 'react-feather'
-import { GrayButton, SuccessButton } from '../../components/button/Index'
+import { Edit2, Eye, Plus, Trash2 } from 'react-feather'
+import { GrayButton, SuccessButton, DangerButton } from '../../components/button/Index'
 import { Layout, Main } from '../../components/layout/Index'
+import DeleteModal from '../../components/modals/delete/Index'
 import DataTable from '../../components/table/Index'
 import Requests from '../../utils/Requests/Index'
 
@@ -15,6 +16,7 @@ const Index = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
     const [searching, setSearching] = useState(false)
+    const [isDelete, setDelete] = useState({ value: null, show: false, loading: false })
     const [header] = useState({
         headers: { Authorization: "Bearer " + localStorage.getItem('token') }
     })
@@ -82,7 +84,7 @@ const Index = () => {
         {
             name: 'Action',
             grow: 0,
-            minWidth: "120px",
+            minWidth: "160px",
             cell: row =>
                 <div>
                     <SuccessButton
@@ -95,6 +97,10 @@ const Index = () => {
                         onClick={() => history.push(`/dashboard/product/edit/${row._id}`)}
                     ><Edit2 size={16} />
                     </SuccessButton>
+                    <DangerButton
+                        style={{ borderRadius: "50%", padding: "6px 9px" }}
+                        onClick={() => setDelete({ value: row, show: true })}
+                    ><Trash2 size={16} /></DangerButton>
                 </div>
         },
     ]
@@ -106,6 +112,15 @@ const Index = () => {
         const response = await Requests.Product.Search(query, header)
         setData(response.data)
         setSearching(false)
+    }
+
+    // Handle delete
+    const handleDelete = async () => {
+        setDelete({ ...isDelete, loading: true })
+
+        await Requests.Product.Delete(isDelete.value._id, header)
+        fetchData()
+        setDelete({ ...isDelete, show: false, loading: false })
     }
 
     return (
@@ -143,6 +158,20 @@ const Index = () => {
                         clearSearch={() => fetchData(1)}
                     />
                 </div>
+
+                {/* Delete confirmation modal */}
+                <DeleteModal
+                    show={isDelete.show}
+                    loading={isDelete.loading}
+                    message={
+                        <div>
+                            <h6>Want to delete this product ?</h6>
+                            <img src={isDelete.value ? isDelete.value.thumbnail : null} className="img-fluid" height={150} alt="Product" />
+                        </div>
+                    }
+                    onHide={() => setDelete({ value: null, show: false, loading: false })}
+                    doDelete={handleDelete}
+                />
             </Main>
         </div>
     );
