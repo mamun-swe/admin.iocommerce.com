@@ -1,4 +1,4 @@
-// Type definitions for eslint 7.28
+// Type definitions for eslint 7.29
 // Project: https://eslint.org
 // Definitions by: Pierre-Marie Dartus <https://github.com/pmdartus>
 //                 Jed Fox <https://github.com/j-f1>
@@ -597,14 +597,22 @@ export namespace Rule {
         report(descriptor: ReportDescriptor): void;
     }
 
-    interface ReportDescriptorOptionsBase {
-        data?: { [key: string]: string } | undefined;
+    type ReportFixer = (fixer: RuleFixer) => null | Fix | IterableIterator<Fix> | Fix[];
 
-        fix?: null | ((fixer: RuleFixer) => null | Fix | IterableIterator<Fix> | Fix[]) | undefined;
+    interface ReportDescriptorOptionsBase {
+        data?: { [key: string]: string };
+
+        fix?: null | ReportFixer;
+    }
+
+    interface SuggestionReportOptions {
+        data?: { [key: string]: string };
+
+        fix: ReportFixer;
     }
 
     type SuggestionDescriptorMessage = { desc: string } | { messageId: string };
-    type SuggestionReportDescriptor = SuggestionDescriptorMessage & ReportDescriptorOptionsBase;
+    type SuggestionReportDescriptor = SuggestionDescriptorMessage & SuggestionReportOptions;
 
     interface ReportDescriptorOptions extends ReportDescriptorOptionsBase {
         suggest?: SuggestionReportDescriptor[] | null | undefined;
@@ -709,7 +717,7 @@ export namespace Linter {
     }
 
     interface ParserOptions {
-        ecmaVersion?: 3 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | undefined;
+        ecmaVersion?: 3 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | "latest" |undefined;
         sourceType?: "script" | "module" | undefined;
         ecmaFeatures?: {
             globalReturn?: boolean | undefined;
@@ -809,6 +817,8 @@ export class ESLint {
 
     lintText(code: string, options?: { filePath?: string | undefined; warnIgnored?: boolean | undefined }): Promise<ESLint.LintResult[]>;
 
+    getRulesMetaForResults(results: ESLint.LintResult[]): ESLint.LintResultData['rulesMeta'];
+
     calculateConfigForFile(filePath: string): Promise<any>;
 
     isPathIgnored(filePath: string): Promise<boolean>;
@@ -851,6 +861,7 @@ export namespace ESLint {
         filePath: string;
         messages: Linter.LintMessage[];
         errorCount: number;
+        fatalErrorCount: number;
         warningCount: number;
         fixableErrorCount: number;
         fixableWarningCount: number;
@@ -975,6 +986,10 @@ export class RuleTester {
             invalid?: RuleTester.InvalidTestCase[] | undefined;
         },
     ): void;
+
+    static only(
+        item: string | RuleTester.ValidTestCase | RuleTester.InvalidTestCase,
+    ): RuleTester.ValidTestCase | RuleTester.InvalidTestCase;
 }
 
 export namespace RuleTester {
@@ -982,6 +997,7 @@ export namespace RuleTester {
         code: string;
         options?: any;
         filename?: string | undefined;
+        only?: boolean;
         parserOptions?: Linter.ParserOptions | undefined;
         settings?: { [name: string]: any } | undefined;
         parser?: string | undefined;
