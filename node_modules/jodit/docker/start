@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker run --rm -v $PWD/..:/app -p 2000:2000 jodit bash -c "npm start"
